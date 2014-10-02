@@ -51,7 +51,9 @@ class FeedManager {
 
     public function removePin($pin)
     {
-        $feed = $this->client->feed('');
+        $feed = $this->getUserFeed($pin->user_id);
+        $activity = $pin->toActivity();
+        $feed->removeActivity($activity['foreign_id'], true);
     }
 
     public function getUsers($user_ids)
@@ -67,7 +69,11 @@ class FeedManager {
     public function getPins($pin_ids)
     {
         $results = array();
-        $pins = Pin::with('item', 'item.user')->whereIn('id', $pin_ids)->get();
+        $with = array('item.pins' => function($query) {
+                $query->where('user_id', '=', Auth::id());
+            }, 'item', 'item.user'
+        );
+        $pins = Pin::with($with)->whereIn('id', $pin_ids)->get();
         foreach ($pins as $pin) {
             $results[$pin->id] = $pin;
         }

@@ -23,4 +23,19 @@ class PinController extends BaseController {
 		return Redirect::to($next);
 	}
 
+	public function destroy($resource)
+	{
+		$pin = Pin::firstOrNew(array(
+				'id' => $resource,
+				'user_id' => Auth::id()
+			)
+		);
+		if ($pin->id !== null) {
+			$manager = App::make('feed_manager');
+			App::make('feed_manager')->removePin($pin);
+			$pin->delete();
+		}
+		return Redirect::to(Input::get('next'));
+	}
+
 }

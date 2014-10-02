@@ -7,7 +7,11 @@ class LandingController extends BaseController {
      */
     public function trending()
     {
-        $items = Item::all()->take(25);
+        $pinned = array('pins' => function($query)
+        {
+            $query->where('user_id', '=', Auth::id());
+        }, 'user');
+        $items = Item::with($pinned)->get()->take(25);
         return View::make('trending', array('items'=> $items));
     }
 

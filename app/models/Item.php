@@ -8,4 +8,9 @@ class Item extends Eloquent {
         return $this->belongsTo('User');
     }
 
+    public function pins()
+    {
+        return $this->hasMany('Pin');
+    }
+
 }

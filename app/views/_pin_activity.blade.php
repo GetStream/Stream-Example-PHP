@@ -9,7 +9,7 @@
             </figcaption>
         @endif
     </figure>
-    @include('_pin_form', array('pin'=>$activity['object']))
+    @include('_pin_form', array('item'=>$activity['object']->item))
     <footer class="pin-attribution">
         by <a href="{{ URL::route('profile', $activity['object']->item->user->username) }}">{{{ $activity['object']->item->user->username }}}</a>@if ($activity['object']->item->created_at) {{{ $activity['object']->item->created_at->diffForHumans() }}} ago @endif
     </footer>
