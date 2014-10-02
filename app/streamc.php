@@ -8,7 +8,7 @@ class FeedManager {
     {
         $api_key = Config::get('stream.api_key');
         $api_secret = Config::get('stream.api_secret');
-        if (getenv('STREAM_URL') !== null) {
+        if (getenv('STREAM_URL') !== false) {
             $this->client = GetStream\Stream\Client::herokuConnect(getenv('STREAM_URL'));
         } else {
             $this->client = new GetStream\Stream\Client($api_key, $api_secret);
