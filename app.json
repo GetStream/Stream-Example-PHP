@@ -1,0 +1,19 @@
+{
+  "name": "Stream Example App",
+  "description": "Pinterest esque example app using GetStream.io",
+  "keywords": [
+    "getstream.io",
+    "HTML5",
+    "PHP"
+  ],
+  "website": "https://getstream.io/",
+  "repository": "https://github.com/GetStream/stream-example-php",
+  "logo": "http://33.media.tumblr.com/avatar_be8b5eef9ae6_128.png",
+  "success_url": "/",
+  "addons": [
+    "stream", "heroku-postgresql:dev"
+  ],
+  "scripts": {
+    "postdeploy": "./provision.sh"
+  }
+}
