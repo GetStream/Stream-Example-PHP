@@ -8,4 +8,7 @@ by pressing the Deploy button below.
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-If you prefer to run this locally then make sure to follow the steps in the [install](https://github.com/GetStream/Stream-Example-PHP/blob/master/install "install") file.
+If you prefer to run this locally then make sure to generate the API keys on [GetStream.io](https://getstream.io/ "GetStream.io") and update the settings in
+app/config/database.php and in app/config/stream.php.
+
+Once you have the right settings you can get your database ready by running the provision command (```./provision.sh```)
