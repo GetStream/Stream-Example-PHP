@@ -3,6 +3,16 @@
 class FeedManager {
 
     public static $feeds = array('flat', 'aggregated');
+    public static $registeredActivityModels = array(
+        'user' => 'User',
+        'follow' => 'Follow', 
+        'pin' => 'Pin'
+    );
+    public static $activityLoaders = array(
+        'User' => array(),
+        'Follow' => array('user.followers'),
+        'Pin' => array('item.pinsFromMe', 'item', 'item.user')
+    );
 
     public function __construct()
     {
@@ -28,18 +38,32 @@ class FeedManager {
         return $this->client->feed("user:$user_id");
     }
 
-    public function followUser($user_id, $target_id)
+    public function followUser($follow)
     {
-        foreach ($this->getFeeds($user_id) as $feed) {
-            $feed->followFeed("user:$user_id");
+        foreach ($this->getFeeds($follow->user_id) as $feed) {
+            $feed->followFeed("user:$follow->user_id");
         }
     }
 
-    public function unfollowUser($user_id, $target_id)
+    public function unfollowUser($follow)
     {
-        foreach ($this->getFeeds($user_id) as $feed) {
-            $feed->unfollowFeed("user:$user_id");
+        foreach ($this->getFeeds($follow->user_id) as $feed) {
+            $feed->unfollowFeed("user:$follow->user_id");
         }
+    }
+
+    public function addFollow($follow)
+    {
+        $feed = $this->getUserFeed($follow->user_id);
+        $activity = $follow->toActivity();
+        $feed->addActivity($activity);
+    }
+
+    public function removeFollow($follow)
+    {
+        $feed = $this->getUserFeed($follow->user_id);
+        $activity = $follow->toActivity();
+        $feed->removeActivity($activity['foreign_id'], true);
     }
 
     public function addPin($pin)
@@ -56,26 +80,12 @@ class FeedManager {
         $feed->removeActivity($activity['foreign_id'], true);
     }
 
-    public function getUsers($user_ids)
+    public function fromDb($model, $ids, $with=array())
     {
         $results = array();
-        $users = User::whereIn('id', $user_ids)->get();
-        foreach ($users as $user) {
-            $results[$user->id] = $user;
-        }
-        return $results;
-    }
-
-    public function getPins($pin_ids)
-    {
-        $results = array();
-        $with = array('item.pins' => function($query) {
-                $query->where('user_id', '=', Auth::id());
-            }, 'item', 'item.user'
-        );
-        $pins = Pin::with($with)->whereIn('id', $pin_ids)->get();
-        foreach ($pins as $pin) {
-            $results[$pin->id] = $pin;
+        $objects = $model::with($with)->whereIn('id', $ids)->get();
+        foreach ($objects as $object) {
+            $results[$object->id] = $object;
         }
         return $results;
     }
@@ -96,8 +106,11 @@ class FeedManager {
     private function retrieveObjects($references)
     {
         $objects = array();
-        $objects['user'] = $this->getUsers(array_keys($references['user']));
-        $objects['pin'] = $this->getPins(array_keys($references['pin']));
+        foreach ($references as $content_type => $content_ids) {
+            $content_type_model = self::$registeredActivityModels[$content_type];
+            $with = self::$activityLoaders[$content_type_model];
+            $objects[$content_type] = $this->fromDb($content_type_model, array_keys($content_ids), $with);
+        }
         return $objects;
     }
 
@@ -149,5 +162,6 @@ class FeedManager {
 
 App::singleton('feed_manager', function()
 {
-    return new FeedManager;
+    $manager = new FeedManager;
+    return $manager;
 });
