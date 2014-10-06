@@ -19,7 +19,8 @@ class FollowController extends BaseController {
 		if ($follow->id === null) {
 			$follow->save();
 			$manager = App::make('feed_manager');
-			$manager->followUser($user_id, $target_id);
+			$manager->followUser($follow);
+			$manager->addFollow($follow);
 		}
 		return Redirect::to(Input::get('next'));
 	}
@@ -33,7 +34,8 @@ class FollowController extends BaseController {
 		);
 		if ($follow->id !== null) {
 			$manager = App::make('feed_manager');
-			$manager->unfollowUser($follow->user_id, $follow->target_id);
+			$manager->unfollowUser($follow);
+			$manager->removeFollow($follow);
 			$follow->delete();
 		}
 		return Redirect::to(Input::get('next'));

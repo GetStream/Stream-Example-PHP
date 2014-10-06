@@ -1,5 +1,5 @@
-@if (count($item->pins) == 1 && $item->pins[0]->user_id === Auth::id())
-    {{ Form::open(array('route' => array('pin.destroy', $item->pins[0]->id), 'method' => 'delete', 'class' => 'pin-bottom')) }}
+@if (count($item->pinsFromMe) > 0)
+    {{ Form::open(array('route' => array('pin.destroy', $item->pinsFromMe[0]->id), 'method' => 'delete', 'class' => 'pin-bottom')) }}
         {{ Form::token() }}
         <textarea class="form-control" name="message" placeholder="Comment..."></textarea>
         <div class="media">

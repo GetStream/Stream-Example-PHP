@@ -24,6 +24,7 @@ Route::filter('autologin', function()
 Route::get('/', array('before' => 'autologin', 'as' => 'trending', 'uses' => 'LandingController@trending'));
 Route::get('/feed', array('before' => 'autologin', 'as' => 'feed', 'uses' => 'FeedController@feed'));
 Route::get('/aggregated', array('before' => 'autologin', 'as' => 'aggregated_feed', 'uses' => 'FeedController@aggregated_feed'));
+Route::get('/people', array('before' => 'autologin', 'as' => 'people', 'uses' => 'ProfileController@index'));
 Route::get('/profile/{username}', array('before' => 'autologin', 'as' => 'profile', 'uses' => 'ProfileController@profile'));
 Route::resource('pin', 'PinController', array('before' => 'autologin'));
 Route::resource('follow', 'FollowController', array('before' => 'autologin'));

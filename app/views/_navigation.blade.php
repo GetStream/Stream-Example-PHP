@@ -19,10 +19,13 @@
                 <li @if ($location == 'aggregated_feed') class="active" @endif>
                     <a href="{{ URL::route('aggregated_feed') }}"><i class="glyphicon glyphicon-th-list"></i> Aggregated Feed</a>
                 </li>
+                <li @if ($location == 'people') class="active" @endif>
+                    <a href="{{ URL::route('people') }}"><i class="glyphicon glyphicon-user"></i> People</a>
+                </li>
                 @if (Auth::check())
                 <li class="dropdown @if ($location == 'profile') active @endif">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="glyphicon glyphicon-user"></i>  {{{ Auth::user()->username }}}<b class="caret"></b>
+                        <i class="glyphicon"></i>  {{{ Auth::user()->username }}}<b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="{{ URL::route('profile', Auth::user()->username) }}">My Profile</a></li>

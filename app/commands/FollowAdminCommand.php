@@ -46,7 +46,7 @@ class FollowAdminCommand extends Command {
 		if ($follow->id === null) {
 			$follow->save();
 			$manager = App::make('feed_manager');
-			$manager->followUser($admin->id, $admin->id);
+			$manager->followUser($follow);
 		}
 		return Redirect::to(Input::get('next'));
 	}

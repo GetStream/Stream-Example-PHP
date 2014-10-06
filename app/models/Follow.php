@@ -16,11 +16,11 @@ class Follow extends Eloquent {
 
     public function toActivity()
     {
-        // return array(
-        //     'actor' => $this->user_id,
-        //     'verb' => 'follow',
-        //     'object' => "follow:$this->id",
-        //     'foreign_id' => "follow:$this->id"
-        // );
+        return array(
+            'actor' => $this->user_id,
+            'verb' => 'follow',
+            'object' => "follow:$this->id",
+            'foreign_id' => "follow:$this->user_id:$this->target_id"
+        );
     }
 }

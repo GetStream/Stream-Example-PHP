@@ -20,6 +20,15 @@ class ProfileController extends BaseController {
         return View::make('profile', array('profile' => $user, 'activities' => $activities, 'follow' => $follow));
     }
 
+    public function index()
+    {
+        $with = array('followers' => function($query) {
+                $query->where('user_id', '=', Auth::id());
+            }
+        );
+        $people = User::with($with)->get()->take(25);
+        return View::make('people', array('people' => $people));
+    }
 }
 
 ?>
