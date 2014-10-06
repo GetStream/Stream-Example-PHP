@@ -1,7 +1,7 @@
 1. if you don't have it yet, install composer
 2. install dependencies with composer ```php composer install ```
 3. create an account on https://getstream.io
-4. get your API credentials (key and secret) and store them in app/config/stream.php
+4. get your API credentials (key and secret) from https://getstream.io and store them in app/config/stream.php
 5. adjust your database settings in app/config/database.php
 6. run database setup ``` ./provision.sh ```
 
