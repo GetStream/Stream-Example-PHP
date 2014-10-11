@@ -109,7 +109,11 @@ class FeedManager {
         foreach ($references as $content_type => $content_ids) {
             $content_type_model = self::$registeredActivityModels[$content_type];
             $with = self::$activityLoaders[$content_type_model];
-            $objects[$content_type] = $this->fromDb($content_type_model, array_keys($content_ids), $with);
+            $fetched = $this->fromDb($content_type_model, array_keys($content_ids), $with);
+            if (count($fetched) < count(array_keys($content_ids))) {
+                throw new Exception('Some data in this feed is not in the database');
+            }
+            $objects[$content_type] = $fetched;
         }
         return $objects;
     }
@@ -147,7 +151,7 @@ class FeedManager {
 
         $references = array();
         foreach ($aggregatedActivities as $aggregated) {
-            $references = array_merge_recursive($references, $this->collectReferences($aggregated['activities']));
+            $references = array_replace_recursive($references, $this->collectReferences($aggregated['activities']));
         }
 
         $objects = $this->retrieveObjects($references);
