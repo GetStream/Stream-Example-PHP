@@ -41,14 +41,14 @@ class FeedManager {
     public function followUser($follow)
     {
         foreach ($this->getFeeds($follow->user_id) as $feed) {
-            $feed->followFeed("user:$follow->user_id");
+            $feed->followFeed("user:$follow->target_id");
         }
     }
 
     public function unfollowUser($follow)
     {
         foreach ($this->getFeeds($follow->user_id) as $feed) {
-            $feed->unfollowFeed("user:$follow->user_id");
+            $feed->unfollowFeed("user:$follow->target_id");
         }
     }
 
