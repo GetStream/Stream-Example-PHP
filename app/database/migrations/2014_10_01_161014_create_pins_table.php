@@ -29,6 +29,7 @@ class CreatePinsTable extends Migration {
                   ->onDelete('cascade');
             $table->string('message')->nullable();
             $table->timestamps();
+            $table->softDeletes();
             $table->unique(array('user_id', 'item_id'));
         });
 

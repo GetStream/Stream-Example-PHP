@@ -1,8 +1,13 @@
 <?php
 
-class Follow extends Eloquent {
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
+class Follow extends GetStream\StreamLaravel\Eloquent\Activity {
+    use SoftDeletingTrait;
+
     protected $table = 'follows';
     protected $fillable = array('user_id', 'target_id');
+    protected $dates = ['deleted_at'];
 
     public function user()
     {
@@ -14,13 +19,4 @@ class Follow extends Eloquent {
         return $this->belongsTo('User');
     }
 
-    public function toActivity()
-    {
-        return array(
-            'actor' => $this->user_id,
-            'verb' => 'follow',
-            'object' => "follow:$this->id",
-            'foreign_id' => "follow:$this->user_id:$this->target_id"
-        );
-    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+use GetStream\StreamLaravel\Enrich;
+
 class ProfileController extends BaseController {
 
     /**
@@ -7,11 +9,11 @@ class ProfileController extends BaseController {
      */
     public function profile($username)
     {
-        $manager = App::make('feed_manager');
         $user = User::where('username', '=', $username)->firstOrFail();
-        $feed = $manager->getUserFeed($user->id);
+        $feed = FeedManager::getUserFeed($user->id);
+        $enricher = new Enrich;
         $activities = $feed->getActivities(0,25)['results'];
-        $activities = $manager->enrichActivities($activities);
+        $activities = $enricher->enrichActivities($activities);
         $follow = Follow::firstOrNew(array(
                 'user_id' => Auth::id(),
                 'target_id' => $user->id,

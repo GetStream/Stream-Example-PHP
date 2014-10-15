@@ -1,5 +1,7 @@
 <?php
 
+use GetStream\StreamLaravel\Enrich;
+
 class FeedController extends BaseController {
 
     /**
@@ -7,11 +9,11 @@ class FeedController extends BaseController {
      */
     public function feed()
     {
-        $manager = App::make('feed_manager');
-        $feed = $manager->getFeeds(Auth::id())['flat'];
+        $feed = FeedManager::getNewsFeeds(Auth::id())['flat'];
+        $enricher = new Enrich;
         $activities = $feed->getActivities(0,25)['results'];
-        $activities = $manager->enrichActivities($activities);
-        return View::make('feed', array('activities'=> $activities));
+        $activities = $enricher->enrichActivities($activities);
+        return View::make('flat_feed', array('activities'=> $activities));
     }
 
     /**
@@ -19,10 +21,10 @@ class FeedController extends BaseController {
      */
     public function aggregated_feed()
     {
-        $manager = App::make('feed_manager');
-        $feed = $manager->getFeeds(Auth::id())['aggregated'];
+        $feed = FeedManager::getNewsFeeds(Auth::id())['aggregated'];
+        $enricher = new Enrich;
         $activities = $feed->getActivities(0,25)['results'];
-        $activities = $manager->enrichAggregatedActivities($activities);
+        $activities = $enricher->enrichAggregatedActivities($activities);
         return View::make('aggregated_feed', array('activities'=> $activities));
     }
 

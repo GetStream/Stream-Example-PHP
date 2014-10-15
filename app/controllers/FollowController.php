@@ -11,16 +11,19 @@ class FollowController extends BaseController {
 	{
 		$target_id = Input::get('target');
 		$user_id = Auth::id();
-		$follow = Follow::firstOrNew(array(
-				'user_id' => Auth::id(),
-				'target_id' => $target_id,
-			)
+		$params = array(
+			'user_id' => Auth::id(),
+			'target_id' => $target_id,
 		);
-		if ($follow->id === null) {
+		$follow = Follow::withTrashed($params)->where($params)->first();
+
+		if ($follow === null) {
+			$follow = new Follow($params);
 			$follow->save();
-			$manager = App::make('feed_manager');
-			$manager->followUser($follow);
-			$manager->addFollow($follow);
+			FeedManager::followUser($follow->user_id, $follow->target_id);
+		} elseif ($follow->trashed()){
+			$follow->restore();
+			FeedManager::followUser($follow->user_id, $follow->target_id);
 		}
 		return Redirect::to(Input::get('next'));
 	}
@@ -34,8 +37,7 @@ class FollowController extends BaseController {
 		);
 		if ($follow->id !== null) {
 			$manager = App::make('feed_manager');
-			$manager->unfollowUser($follow);
-			$manager->removeFollow($follow);
+			FeedManager::unfollowUser($follow->user_id, $follow->target_id);
 			$follow->delete();
 		}
 		return Redirect::to(Input::get('next'));

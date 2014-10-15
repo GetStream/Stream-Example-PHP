@@ -7,7 +7,7 @@
 @section('content')
     <div id="wrapper">
         @foreach ($activities as $activity)
-            @include('_aggregated_activity', array('aggregated_activity'=>$activity))
+            @include('stream-laravel::render_activity', array('activity'=>$activity))
         @endforeach
     </div>
 @stop

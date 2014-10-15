@@ -9,15 +9,18 @@ class PinController extends BaseController {
 	 */
 	public function store()
 	{
-		$pin = Pin::firstOrNew(array(
-				'user_id' => Auth::id(),
-				'item_id' => Input::get('item'),
-				'influencer_id' => Input::get('influencer'),
-			)
+		$params = array(
+			'user_id' => Auth::id(),
+			'item_id' => Input::get('item'),
+			'influencer_id' => Input::get('influencer'),
 		);
-		if ($pin->id === null) {
+		$pin = Pin::withTrashed()->where($params)->first();
+		if ($pin === null) {
+			$pin = new Pin($params);
 			$pin->save();
-			App::make('feed_manager')->addPin($pin);
+		}
+		elseif ($pin->trashed()) {
+			$pin->restore();
 		}
 		$next = Input::get('next');
 		return Redirect::to($next);
@@ -32,7 +35,6 @@ class PinController extends BaseController {
 		);
 		if ($pin->id !== null) {
 			$manager = App::make('feed_manager');
-			App::make('feed_manager')->removePin($pin);
 			$pin->delete();
 		}
 		return Redirect::to(Input::get('next'));

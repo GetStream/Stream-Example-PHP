@@ -24,7 +24,7 @@
         <div class="col-lg-8">
             <div class="container-pins profile">
                 @foreach ($activities as $activity)
-                    @include('_activity', array('activity'=>$activity))
+                    @include('stream-laravel::render_activity', array('activity'=>$activity))
                 @endforeach
             </div>
         </div>

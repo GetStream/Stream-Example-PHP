@@ -1,8 +1,13 @@
 <?php
 
-class Pin extends Eloquent {
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
+class Pin extends GetStream\StreamLaravel\Eloquent\Activity {
+    use SoftDeletingTrait;
+
     protected $table = 'pins';
     protected $fillable = array('user_id', 'item_id', 'influencer_id');
+    protected $dates = ['deleted_at'];
 
     public function item()
     {
@@ -14,13 +19,4 @@ class Pin extends Eloquent {
         return $this->belongsTo('User');
     }
 
-    public function toActivity()
-    {
-        return array(
-            'actor' => $this->user_id,
-            'verb' => 'pin',
-            'object' => "pin:$this->id",
-            'foreign_id' => "pin:$this->id"
-        );
-    }
 }

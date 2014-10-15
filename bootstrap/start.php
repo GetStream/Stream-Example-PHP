@@ -70,6 +70,4 @@ require $framework.'/Illuminate/Foundation/start.php';
 |
 */
 
-require $app['path.base'] . '/app/streamc.php';
-
 return $app;
