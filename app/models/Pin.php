@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Pin extends GetStream\StreamLaravel\Eloquent\Activity {
+class Pin extends Eloquent {
+    use GetStream\StreamLaravel\Eloquent\ActivityTrait;
     use SoftDeletingTrait;
 
     protected $table = 'pins';

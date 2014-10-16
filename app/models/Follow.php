@@ -2,7 +2,8 @@
 
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class Follow extends GetStream\StreamLaravel\Eloquent\Activity {
+class Follow extends Eloquent {
+    use GetStream\StreamLaravel\Eloquent\ActivityTrait;
     use SoftDeletingTrait;
 
     protected $table = 'follows';
