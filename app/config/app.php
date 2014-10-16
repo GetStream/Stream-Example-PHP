@@ -94,7 +94,6 @@ return array(
 	*/
 
 	'providers' => array(
-		'GetStream\StreamLaravel\StreamLaravelServiceProvider',
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
 		'Illuminate\Cache\CacheServiceProvider',
@@ -121,6 +120,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
+		'GetStream\StreamLaravel\StreamLaravelServiceProvider',
 	),
 
 	/*
