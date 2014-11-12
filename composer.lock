@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "87a15fc8c64c4c875f1fc550f6cbba11",
+    "hash": "6641af32dc8b5b520ffbca13a70940c0",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -194,16 +194,16 @@
         },
         {
             "name": "get-stream/stream-laravel",
-            "version": "2.0.1",
+            "version": "2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GetStream/stream-laravel.git",
-                "reference": "cc61f36a5a70c64965fce1b108294a37a341be87"
+                "reference": "9e470910da13db009d2a139a3e9596a0634411f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GetStream/stream-laravel/zipball/cc61f36a5a70c64965fce1b108294a37a341be87",
-                "reference": "cc61f36a5a70c64965fce1b108294a37a341be87",
+                "url": "https://api.github.com/repos/GetStream/stream-laravel/zipball/9e470910da13db009d2a139a3e9596a0634411f8",
+                "reference": "9e470910da13db009d2a139a3e9596a0634411f8",
                 "shasum": ""
             },
             "require": {
@@ -242,7 +242,7 @@
                 "newsfeed",
                 "notification feed"
             ],
-            "time": "2014-11-11 17:58:03"
+            "time": "2014-11-12 08:12:33"
         },
         {
             "name": "guzzlehttp/guzzle",
