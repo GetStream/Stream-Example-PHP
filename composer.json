@@ -6,7 +6,7 @@
     "type": "project",
     "require": {
         "laravel/framework": "4.2.*",
-        "get-stream/stream-laravel": "2.0.2"
+        "get-stream/stream-laravel": "2.0.3"
     },
     "require-dev": {
         "heroku/heroku-buildpack-php": "*"

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6641af32dc8b5b520ffbca13a70940c0",
+    "hash": "41cee8ee5dbf49affc8cc9889de908e4",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -147,16 +147,16 @@
         },
         {
             "name": "get-stream/stream",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GetStream/stream-php.git",
-                "reference": "5e7b3bb4580e722c01cbd62b05cf218e10a10a93"
+                "reference": "ab2622e2a5f609a87f9de92df06c40966dcc7e91"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GetStream/stream-php/zipball/5e7b3bb4580e722c01cbd62b05cf218e10a10a93",
-                "reference": "5e7b3bb4580e722c01cbd62b05cf218e10a10a93",
+                "url": "https://api.github.com/repos/GetStream/stream-php/zipball/ab2622e2a5f609a87f9de92df06c40966dcc7e91",
+                "reference": "ab2622e2a5f609a87f9de92df06c40966dcc7e91",
                 "shasum": ""
             },
             "require": {
@@ -190,24 +190,24 @@
                 "newsfeed",
                 "stream"
             ],
-            "time": "2014-11-11 08:36:45"
+            "time": "2014-11-12 08:40:27"
         },
         {
             "name": "get-stream/stream-laravel",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GetStream/stream-laravel.git",
-                "reference": "9e470910da13db009d2a139a3e9596a0634411f8"
+                "reference": "f0313a877c84230a36d1a5b7a9f63f4b1c834abe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/GetStream/stream-laravel/zipball/9e470910da13db009d2a139a3e9596a0634411f8",
-                "reference": "9e470910da13db009d2a139a3e9596a0634411f8",
+                "url": "https://api.github.com/repos/GetStream/stream-laravel/zipball/f0313a877c84230a36d1a5b7a9f63f4b1c834abe",
+                "reference": "f0313a877c84230a36d1a5b7a9f63f4b1c834abe",
                 "shasum": ""
             },
             "require": {
-                "get-stream/stream": "2.0.0",
+                "get-stream/stream": "2.0.1",
                 "illuminate/database": "4.2.*",
                 "illuminate/support": "4.2.*",
                 "php": ">=5.4.0"
@@ -242,7 +242,7 @@
                 "newsfeed",
                 "notification feed"
             ],
-            "time": "2014-11-12 08:12:33"
+            "time": "2014-11-12 08:41:25"
         },
         {
             "name": "guzzlehttp/guzzle",
