@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6b1031b40d7852700f80a111acda0a71",
+    "hash": "280b18868ecf263493c2e3c5ed020c18",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -194,7 +194,7 @@
         },
         {
             "name": "get-stream/stream-laravel",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/GetStream/stream-laravel.git",
