@@ -11,15 +11,6 @@
 |
 */
 
-Route::filter('autologin', function()
-{
-    if (!Auth::check())
-    {
-        $user = User::where('username', '=', 'admin')->firstOrFail();
-        Auth::login($user);
-    }
-});
-
 
 Route::get('/', array('before' => 'autologin', 'as' => 'trending', 'uses' => 'LandingController@trending'));
 Route::get('/feed', array('before' => 'autologin', 'as' => 'feed', 'uses' => 'FeedController@feed'));
