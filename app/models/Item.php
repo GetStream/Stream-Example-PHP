@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Item extends Eloquent {
-    use SoftDeletingTrait;
+    use SoftDeletes;
 
     protected $table = 'items';
     protected $dates = ['deleted_at'];

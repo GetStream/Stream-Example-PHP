@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Follow extends Eloquent {
     use GetStream\StreamLaravel\Eloquent\ActivityTrait;
-    use SoftDeletingTrait;
+    use SoftDeletes;
 
     protected $table = 'follows';
     protected $fillable = array('user_id', 'target_id');
