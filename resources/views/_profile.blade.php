@@ -8,16 +8,16 @@
           <h2><a href="{{ URL::route('profile', $profile->username) }}">{{ $profile->username }}</a></h2>
           <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
           @if ($follow && $follow->id)
-            {{ Form::open(array('route' => array('follow.destroy', $follow->id), 'method' => 'delete')) }}
+            {!! Form::open(array('route' => array('follow.destroy', $follow->id), 'method' => 'delete')) !!}
               <input name="next" type="hidden" value="{{{ Request::url() }}}">
               <button type="submit" href="{{ URL::route('follow.destroy', $follow->id) }}" class="btn btn-danger">Unfollow</button>
-            {{ Form::close() }}
+            {!! Form::close() !!}
           @else
-            {{ Form::open(array('route' => array('follow.store'), 'method' => 'post')) }}
+            {!! Form::open(array('route' => array('follow.store'), 'method' => 'post')) !!}
               <input name="target" type="hidden" value="{{ $profile->id }}">
               <input name="next" type="hidden" value="{{{ Request::url() }}}">
               <button type="submit" href="{{ URL::route('follow.store') }}" class="btn btn-default">Follow</button>
-            {{ Form::close() }}
+            {!! Form::close() !!}
           @endif
       </div>
       @if ($full)

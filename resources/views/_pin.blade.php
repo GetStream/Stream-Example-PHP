@@ -15,6 +15,6 @@
     </figure>
     @include('_pin_form', array('item'=>$item))
     <footer class="pin-attribution">
-        by <a href="{{ URL::route('profile', $item->user->username) }}">{{{ $item->user->username }}}</a>@if ($item->created_at) {{{ $item->created_at->diffForHumans() }}} ago @endif
+        by <a href="{!! URL::route('profile', $item->user->username) !!}">{{{ $item->user->username }}}</a>@if ($item->created_at) {{{ $item->created_at->diffForHumans() }}} ago @endif
     </footer>
 </article>
