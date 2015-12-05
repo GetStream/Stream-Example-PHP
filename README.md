@@ -16,6 +16,6 @@ If you are using Laravel 4, you can checkout the Laravel 4 release from here: ht
 
 ####Local development
 If you prefer to run this locally then make sure to generate the API keys on [GetStream.io](https://getstream.io/ "GetStream.io") and update the settings in
-app/config/database.php and in app/config/packages/get-stream/stream-laravel/config.php.
+config/database.php and in config/packages/get-stream/stream-laravel/config.php.
 
 Once you have the right settings you can get your database ready by running the provision command (```./provision.sh```)
