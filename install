@@ -1,8 +1,12 @@
 1. if you don't have it yet, install composer
 2. install dependencies with composer ```php composer install ```
 3. create an account on https://getstream.io
-4. get your API credentials (key and secret) from https://getstream.io and store them in config/stream.php
-5. adjust your database settings in config/database.php
-6. run database setup ``` ./provision.sh ```
+4. generate the config file php artisan vendor:publish --provider="GetStream\StreamLaravel\StreamLaravelServiceProvider"
+5. get your API credentials (key and secret) from https://getstream.io 
+6. put your credentials in the config file created by artisan (stream-laravel)
+7. adjust your database settings in config/database.php
+8. run database setup ``` ./provision.sh ```
+
+The example app is based on stream-laravel package, please refer to its documentation: https://github.com/GetStream/Stream-Laravel
 
 If you have any problems please open a issue on github and paste any error you get in the console.
