@@ -6,6 +6,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Laravel</title>
 
+	<script type="text/javascript">
+	if (window.location.protocol != "http:")
+	    window.location.href = "http:" + window.location.href.substring(window.location.protocol.length);
+	</script>
+
 	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- Fonts -->
