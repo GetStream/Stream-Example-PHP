@@ -38,7 +38,7 @@
                                 Also admin is a slightly narcissistic user and follows her own account.
                                 
                                 When you pin items on this trending page, you'll see them appear in the feeds of your followers.
-                                Pin a few items and have a look at the Flat and Aggregated feed pages.
+                                Pin a few items and have a look at the Flat and Aggregated timelines pages.
                             </p>
                             <p>
                                 <a class="btn btn-primary btn-lg" href="https://getstream.io" role="button">

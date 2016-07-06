@@ -9,7 +9,7 @@ class FeedController extends BaseController {
      */
     public function feed()
     {
-        $feed = FeedManager::getNewsFeeds(Auth::id())['flat'];
+        $feed = FeedManager::getNewsFeeds(Auth::id())['timeline'];
         $enricher = new Enrich;
         $activities = $feed->getActivities(0,25)['results'];
         $activities = $enricher->enrichActivities($activities);
@@ -21,7 +21,7 @@ class FeedController extends BaseController {
      */
     public function aggregated_feed()
     {
-        $feed = FeedManager::getNewsFeeds(Auth::id())['aggregated'];
+        $feed = FeedManager::getNewsFeeds(Auth::id())['timeline_aggregated'];
         $enricher = new Enrich;
         $activities = $feed->getActivities(0,25)['results'];
         $activities = $enricher->enrichAggregatedActivities($activities);

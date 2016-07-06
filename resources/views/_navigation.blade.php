@@ -14,10 +14,10 @@
                     <a href="{{ URL::route('trending') }}">Trending</a>
                 </li>
                 <li @if ($location == 'feed') class="active" @endif>
-                    <a href="{{ URL::route('feed') }}"><i class="glyphicon glyphicon-th"></i> Flat Feed</a>
+                    <a href="{{ URL::route('feed') }}"><i class="glyphicon glyphicon-th"></i> Timeline</a>
                 </li>
                 <li @if ($location == 'aggregated_feed') class="active" @endif>
-                    <a href="{{ URL::route('aggregated_feed') }}"><i class="glyphicon glyphicon-th-list"></i> Aggregated Feed</a>
+                    <a href="{{ URL::route('aggregated_feed') }}"><i class="glyphicon glyphicon-th-list"></i> Aggregated Timeline</a>
                 </li>
                 <li @if ($location == 'people') class="active" @endif>
                     <a href="{{ URL::route('people') }}"><i class="glyphicon glyphicon-user"></i> People</a>
