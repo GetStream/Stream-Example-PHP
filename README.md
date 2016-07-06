@@ -9,7 +9,7 @@ is to create a website with activity feeds using Laravel and [Stream-Laravel](ht
 
 The application is built using Laravel 5 and Stream-Laravel. The best way to try this application is via Heroku; you can deploy this example (for free) on Heroku by pressing the Deploy button below.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/GetStream/Stream-Example-PHP/tree/laravel4)
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 ####Laravel 4
 If you are using Laravel 4, you can checkout the Laravel 4 release from here: https://github.com/GetStream/Stream-Example-PHP/tree/laravel4
