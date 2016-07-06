@@ -25,7 +25,7 @@
         <meta name="msapplication-TileImage" content="{{ URL::asset('images/favicon-144x144-precomposed.png') }}">
         <meta name="msapplication-TileColor" content="#222222">
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}" type="text/x-scss" charset="utf-8">
+        <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}" type="text/css" charset="utf-8">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,500' rel='stylesheet' type='text/css'>
     </head>
     <body>
