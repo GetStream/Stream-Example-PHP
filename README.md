@@ -1,3 +1,5 @@
+> **This repository is archived and no longer maintained.** For a current alternative, see [the Feeds v3 PHP docs](https://getstream.io/activity-feeds/docs/php/).
+
 Stream Example App
 ------------------
 
